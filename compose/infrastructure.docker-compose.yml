@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  core_database:
+    image: postgres:15-alpine
+    container_name: "kartowka__core_database"
+    volumes:
+      - "core_database:/var/lib/postgresql/data"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=${KARTOWKA_CORE_ADMIN_USERNAME}
+      - POSTGRES_PASSWORD=${KARTOWKA_CORE_ADMIN_PASSWORD}
+      - POSTGRES_DB=postgres
+
+volumes:
+  core_database:
+    name: "kartowka__core_database"
